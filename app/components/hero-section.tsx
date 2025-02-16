@@ -71,7 +71,7 @@ export function HeroSection() {
 
         <div className="flex flex-col items-center gap-4">
           <div className="relative">
-            <Code className="text-lg p-4 bg-secondary text-secondary-foreground rounded-md pr-12">
+            <Code className="text-xs sm:text-sm md:text-lg p-4 bg-secondary text-secondary-foreground rounded-md pr-12">
               {codeSnippet}
             </Code>
             <Button

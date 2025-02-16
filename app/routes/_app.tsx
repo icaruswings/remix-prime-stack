@@ -1,40 +1,33 @@
-import { getAuth } from "@clerk/remix/ssr.server";
-import { LoaderFunctionArgs, redirect } from "@remix-run/node";
+// import { getAuth } from "@clerk/remix/ssr.server";
+// import { LoaderFunctionArgs, redirect } from "@remix-run/node";
 import { Outlet } from "@remix-run/react";
-import { PropsWithChildren } from "react";
 import ErrorBoundary from "~/components/error-boundary";
 import Footer from "~/components/footer";
 
-export const loader = async (args: LoaderFunctionArgs) => {
-  const { sessionId } = await getAuth(args);
+// export const loader = async (args: LoaderFunctionArgs) => {
+//   const { sessionId } = await getAuth(args);
 
-  if (!sessionId) {
-    const returnUrl = new URL(args.request.url);
-    throw redirect(`/sign-in?redirect_url=${returnUrl.pathname}`, {});
-  }
+//   if (!sessionId) {
+//     const returnUrl = new URL(args.request.url);
+//     throw redirect(`/sign-in?redirect_url=${returnUrl.pathname}`, {});
+//   }
 
-  return null;
-};
+//   return null;
+// };
 
-function Layout({ children }: PropsWithChildren<unknown>) {
+export default function Layout() {
   return (
-    <main className="h-full w-full max-w-4xl mx-auto flex flex-col">
-      <div className="flex-1 flex flex-col justify-center items-center">
-        {children}
-      </div>
-      <div className="flex-none">
-        <Footer />
-      </div>
-    </main>
+    <div className="container mx-auto">
+      <main className="flex min-h-svh w-full flex-col">
+        <div className="flex flex-1 overflow-hidden">
+          <Outlet />
+        </div>
+        <div className="flex-none">
+          <Footer />
+        </div>
+      </main>
+    </div>
   );
 }
-
-export default function () {
-  return (
-    <Layout>
-      <Outlet />
-    </Layout>
-  );
-}
-
+ 
 export { ErrorBoundary };

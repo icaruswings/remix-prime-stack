@@ -1,40 +1,76 @@
-# Welcome to Remix!
+# Remix Prime Stack
 
-- 📖 [Remix docs](https://remix.run/docs)
+[DESCRIPTION]
 
-## Development
+## Features
 
-Run the dev server:
+[TECHNICAL FEATURES]
 
-```shellscript
+## Getting Started
+
+### Prerequisites
+
+- Node.js 18+
+- npm/yarn
+- Stripe Account
+- Clerk Account
+- Convex Account
+
+### Environment Variables
+
+Create a `.env.local` file with:
+
+```bash
+NEXT_PUBLIC_CONVEX_URL=your_convex_url
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_key
+CLERK_SECRET_KEY=your_clerk_secret
+STRIPE_SECRET_KEY=your_stripe_secret
+STRIPE_WEBHOOK_SECRET=your_webhook_secret
+NEXT_PUBLIC_APP_URL=http://localhost:3000
+```
+
+### Installation
+
+```bash
+# Clone the repository
+git clone https://github.com/sonnysangha/ticket-marketplace-saas-nextjs15-convex-clerk-stripe-connect
+
+# Install dependencies
+npm install
+
+# Start the development server
 npm run dev
+
+# In a separate terminal, start Convex
+npx convex dev
 ```
 
-## Deployment
+### Setting up Clerk
 
-First, build your app for production:
+1. [Create a Clerk application](https://clerk.com)
+2. Configure authentication providers
+3. Set up redirect URLs
+4. Add environment variables
 
-```sh
-npm run build
-```
+### Setting up Convex
 
-Then run the app in production mode:
+1. [Create a Convex account](https://convex.dev)
+2. Create a new project
+3. Install the Convex CLI:
+   ```bash
+   npm install convex
+   ```
+4. Initialize Convex in your project:
+   ```bash
+   npx convex init
+   ```
+5. Copy your deployment URL from the Convex dashboard and add it to your `.env.local`:
+   ```bash
+   CONVEX_URL=your_deployment_url
+   ```
+6. Start the Convex development server:
+   ```bash
+   npx convex dev
+   ```
 
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+Note: Keep the Convex development server running while working on your project. It will sync your backend functions and database schema automatically.

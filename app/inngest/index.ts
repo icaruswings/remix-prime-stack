@@ -1,5 +1,5 @@
-import helloWorld from "./helloWorld";
+import updateMessage from "./update-message";
 
-export const functions = [helloWorld];
+export const functions = [updateMessage];
 
 export { inngest } from "./client";
